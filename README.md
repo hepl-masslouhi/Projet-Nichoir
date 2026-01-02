@@ -81,7 +81,7 @@ Le **Raspberry Pi** sert de serveur central pour stocker les images et mesures, 
 ## PCB et Boîtier
 
 - **PCB personnalisé** : permet de connecter le PIR, la LED flash et l’ESP32-CAM via un connecteur, réduisant l’encombrement et sécurisant les connexions  
-- **Boîtier** : protège tout le système des intempéries et des animaux, avec ouverture pour entretien et alimentation  
+- **Boîtier** : protège tout le système des intempéries et des animaux
 - **Gestion de l’énergie** : intégration de la batterie et du panneau solaire pour un fonctionnement autonome  
 
 ---
