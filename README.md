@@ -47,13 +47,13 @@ Pour le projet, nous utilisons le module **TimerCamera**, basé sur l’ESP32. I
 - Batterie rechargeable possible via port dédié  
 - Connectivité : **Wi-Fi** pour transmission d’images 
 
-<img width="300" height="300" alt="Image" src="https://github.com/user-attachments/assets/7f696215-18ed-42f8-b4d0-89aa8737adf9" />
+<img width="300" height="300" alt="Image" src="https://github.com/user-attachments/assets/286b003a-986c-4b1b-ae84-38ee08c723b8" />
 
 ### Développement
 
 - Programmation en **Arduino IDE (C/C++)**
 
-<img width="100" height="100" alt="Image" src="https://github.com/user-attachments/assets/40a4a9ca-d478-4fe1-9633-b867ed142920" />
+<img width="100" height="100" alt="Image" src="https://github.com/user-attachments/assets/2efca3a7-ae58-4dda-8356-7be971261908" />
 
 ---
 
