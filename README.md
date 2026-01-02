@@ -28,7 +28,7 @@ Le système est alimenté par une **batterie rechargeable** 🔋, rechargée par
 ## Répertoires
 
 - [ESP32](./ESP32/) : code Arduino pour la capture d’images, lecture du capteur et envoi MQTT  
-- [RaspberryPi](./RaspberryPi/) : scripts Python pour réception MQTT, stockage et affichage sur site web  
+- [RaspberryPi](./RASPBERRY/) : scripts Python pour réception MQTT, stockage et affichage sur site web  
 - [Boîtier](./Boitier/) : fichiers liés au boîtier  
 - [PCB](./PCB/) : fichiers et schémas du PCB pour le montage PIR + LED  
 
