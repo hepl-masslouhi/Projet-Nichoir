@@ -1,5 +1,6 @@
 # Projet Nichoir Connecté 🐦
 <img width="620" height="414" alt="Image" src="https://github.com/user-attachments/assets/aefba0d8-88c2-43fa-afcf-ec8ca74970dd" />
+
 ## Description
 
 Dans le cadre du cours **SmartCities**, nous devons réaliser un projet de type **nichoir connecté**. L’objectif est de concevoir un système autonome capable de **capturer des images**, **mesurer des tensions** et **transmettre ces données** pour analyse et visualisation.
@@ -46,12 +47,13 @@ Pour le projet, nous utilisons le module **TimerCamera**, basé sur l’ESP32. I
 - Batterie rechargeable possible via port dédié  
 - Connectivité : **Wi-Fi** pour transmission d’images 
 
-<img width="500" height="500" alt="Image" src="https://github.com/user-attachments/assets/7f696215-18ed-42f8-b4d0-89aa8737adf9" />
+<img width="300" height="300" alt="Image" src="https://github.com/user-attachments/assets/7f696215-18ed-42f8-b4d0-89aa8737adf9" />
 
 ### Développement
 
 - Programmation en **Arduino IDE (C/C++)**
-![Image](https://github.com/user-attachments/assets/3ae2f8f3-50c1-431d-bfd9-ee0a236af56a)
+
+<img width="100" height="100" alt="Image" src="https://github.com/user-attachments/assets/40a4a9ca-d478-4fe1-9633-b867ed142920" />
 
 ---
 
@@ -66,11 +68,12 @@ Le **Raspberry Pi** sert de serveur central pour stocker les images et mesures, 
 - Serveur web local avec Flask 
 - Réception des données via **MQTT**  
 
-<img width="623" height="401" alt="Image" src="https://github.com/user-attachments/assets/e2beb3de-28a1-4ba5-be4a-76e60e3efe2a" />
+<img width="300" height="300" alt="Image" src="https://github.com/user-attachments/assets/e2beb3de-28a1-4ba5-be4a-76e60e3efe2a" />
 
 ### Développement
 
 - Programmation en **Python** via **Visual Studio Code**
+
 <img width="100" height="100" alt="Image" src="https://github.com/user-attachments/assets/c8c247fe-ab5e-43ec-9325-5a7f1a45c9ba" />
 
 ---
