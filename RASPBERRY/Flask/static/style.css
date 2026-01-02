@@ -1,0 +1,279 @@
+body {
+    background: #1e1e1e;
+    color: #f0f0f0;
+    margin: 0;
+    font-family: 'Montserrat', 'Poppins', 'Helvetica Neue', sans-serif;
+}
+
+/* NAVBAR */
+nav {
+    background: #333;
+    padding: 12px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+nav a {
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+    font-size: 18px;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    padding-top: 80px;
+}
+
+/* GALLERY */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #444;
+    transition: transform 0.2s;
+}
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+/* HAMBURGER ICON */
+#hamburger {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* SIDE MENU */
+#side-menu {
+    position: fixed;
+    top: 0;
+    left: -260px; /* caché légèrement plus large */
+    width: 260px;
+    height: 100%;
+    background: #1e1e1e; /* gris très sombre pro */
+    padding-top: 70px;
+    transition: left 0.3s ease-out;
+    z-index: 1002;
+
+    border-right: 1px solid #333; /* séparation subtile */
+}
+
+#side-menu.open {
+    left: 0; /* s’affiche */
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.5); /* effet profondeur */
+}
+
+#side-menu a {
+    display: block;
+    padding: 15px 25px;
+    color: #dcdcdc; /* gris clair professionnel */
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Montserrat', 'Poppins', sans-serif; /* moderne et pro */
+    font-weight: 500;
+    border-radius: 6px; /* coins arrondis */
+    margin: 5px 10px; /* espace entre les liens */
+    transition: all 0.3s ease; /* hover doux */
+}
+
+#side-menu a:hover {
+    background: #333; /* hover plus subtil */
+    color: #ffffff; /* texte devient blanc */
+    transform: translateX(5px); /* léger décalage au survol */
+    box-shadow: inset 0 0 5px rgba(255,255,255,0.1);
+}
+
+/* GRAY OVERLAY */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 1000;
+}
+
+#overlay.show {
+    display: block;
+}
+
+/* Décale le contenu pour qu'il ne soit pas sous le hamburger */
+.content {
+    padding-top: 60px;
+}
+/* LIGHTBOX */
+#lightbox {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#lightbox-img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+
+#prev, #next {
+    position: absolute;
+    top: 50%;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    transform: translateY(-50%);
+    padding: 0 20px;
+}
+
+#prev { left: 0; }
+#next { right: 0; }
+
+/* TITRE */
+.hero-section {
+    text-align: center;
+    padding: 80px 20px;              /* un peu plus d’espace pour le visuel */
+    background: linear-gradient(135deg, #5C5555, #3a3a3a); /* dégradé subtil pro */
+    color: #ffffff;
+    margin-bottom: 40px;
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+}
+.hero-section h1 {
+    font-size: 3.5rem;               /* plus impactant */
+    margin-bottom: 15px;
+    font-weight: 700;                 /* titre bien marqué */
+    line-height: 1.2;
+    letter-spacing: 1px;             /* léger espacement pour élégance */
+}
+.hero-section h2 {
+    font-size: 2rem;                  /* légèrement plus grand pour équilibre */
+    margin-bottom: 30px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #e0e0e0;                  /* texte secondaire légèrement gris */
+}
+
+.overview, .features, .workflow {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+.overview ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    font-size: 1.1rem;
+}
+/* Features */
+.features h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+.features .cards {
+    display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 4 colonnes sur grand écran */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Card styling */
+.card {
+    background-color: #2a2a2a;   /* gris sombre pour dark mode */
+    padding: 25px;
+    border-radius: 10px;
+    color: #f0f0f0;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    
+    /* Ajout du contour */
+    border: 1px solid #444;  /* gris clair subtil pour démarquer */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* léger relief */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+    border-color: #ffffff; /* contour coloré au hover pour accent */
+}
+.card h3 {
+    margin-top: 0;
+    color: #ffffff;            /* couleur  pour titres */
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Workflow */
+.workflow h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+.workflow .step {
+    margin-bottom: 25px;
+}
+.workflow .step h3 {
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.workflow .step p {
+    color: #dcdcdc;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .features .cards {
+        grid-template-columns: 1fr; /* 1 colonne sur mobile */
+    }
+    .workflow .step {
+        margin-bottom: 20px;
+    }
+}
+
+.workflow ol {
+    padding-left: 20px;
+    font-size: 1.1rem;
+}
+
+/* FOOTER */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    margin: 0;
+}
+.content {
+    flex: 1; /* pousse le footer en bas si peu de contenu */
+}
+.footer {
+    color: #7D7777;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+}
+

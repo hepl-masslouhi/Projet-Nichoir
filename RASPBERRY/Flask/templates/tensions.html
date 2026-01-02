@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Tensions{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;">Tensions mesurées</h1>
+
+<div style="max-width: 1000px; margin: auto;"> 
+  <canvas id="tensionChart"></canvas> 
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Préparer les données
+let labels = [{% for t in tensions %}"{{ t.split(' → ')[0] }}"{% if not loop.last %}, {% endif %}{% endfor %}];
+let data = [{% for t in tensions %}{{ t.split(' → ')[1].replace('V','') }}{% if not loop.last %}, {% endif %}{% endfor %}];
+
+// Créer le graphique
+const ctx = document.getElementById('tensionChart').getContext('2d');
+const tensionChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Tension (V)',
+            data: data,
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            fill: true,
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: false,
+       	 	min: 0,       // ✅ valeur minimale
+        	max: 5,       // ✅ valeur maximale
+        	ticks: {
+            		stepSize: 0.5
+        	},
+                title: {
+                    display: true,
+                    text: 'Tension (V)'
+                }
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: 'Date'
+                }
+            }
+        },
+        animation: {
+            duration: 1200,
+            easing: 'easeOutQuad'
+        },
+        animations: {
+            borderColor: {
+                type: 'color',
+                duration: 2000,
+                easing: 'easeInOutQuad',
+                from: 'rgba(54, 162, 235, 1)',
+                to: 'rgba(255, 99, 132, 1)',
+                loop: true
+            }
+        }
+    }
+});
+</script>
+{% endblock %}
+

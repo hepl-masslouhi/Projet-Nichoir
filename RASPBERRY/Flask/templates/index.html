@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil - Nichoir Connecté{% endblock %}
+
+{% block content %}
+
+<div class="hero-section">
+    <h1>Projet de Nichoir Connecté</h1>
+    <h2>SmartCities 2025-2026</h2>
+    <p>Suivi intelligent de la vie des oiseaux avec un coût accessible et une autonomie énergétique prolongée.</p>
+</div>
+
+<section class="overview">
+    <h2>Proposition de Valeur</h2>
+    <ul>
+        <li>Prix : moins de 50 €</li>
+        <li>Autonomie énergétique : 6 mois à 1 an sur batterie</li>
+        <li>Évolutif : possibilité d’ajouter un panneau solaire</li>
+        <li>Suivi en temps réel via interface Web et MQTT</li>
+    </ul>
+</section>
+
+<section class="features">
+    <h2>Caractéristiques Techniques</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Capteur de Présence</h3>
+            <p>PIR pour détecter les oiseaux.</p>
+        </div>
+        <div class="card">
+            <h3>Caméra TimerCam</h3>
+            <p>OV3660, 3MP, DFOV 66.5°, résolution jusqu’à 2048x1536.</p>
+        </div>
+        <div class="card">
+            <h3>Raspberry Pi</h3>
+            <p>Serveur Web Flask, stockage et traitement des données via MQTT.</p>
+        </div>
+        <div class="card">
+            <h3>Gestion d'Énergie</h3>
+            <p>Ultra-basse consommation, RTC intégré, batterie externe possible.</p>
+        </div>
+    </div>
+</section>
+
+<section class="workflow">
+    <h2>Fonctionnement du Système</h2>
+    <ol>
+        <li>Capteur PIR détecte la présence d’oiseaux.</li>
+        <li>TimerCAM capture une photo avec éclairage IR.</li>
+        <li>Photo envoyée au Raspberry Pi via Wi-Fi.</li>
+        <li>Données reçues par script Python et stockées dans MariaDB.</li>
+        <li>Interface Web Flask pour visualiser galerie et niveau de batterie.</li>
+    </ol>
+</section>
+
+{% endblock %}
+

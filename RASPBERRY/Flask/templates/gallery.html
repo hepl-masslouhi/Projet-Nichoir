@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}Galerie{% endblock %}
+
+{% block content %}
+
+<div style="text-align: center;">
+    <h1>Galerie de Photos</h1>
+</div>
+
+<div class="gallery">
+    {% for img in images %}
+        <div class="gallery-item">
+            <img src="{{ img }}" alt="photo" onclick="openLightbox({{ loop.index0 }})">
+        </div>
+    {% endfor %}
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+    <span id="prev" onclick="prevImage(event)">&#10094;</span>
+    <div style="text-align: center;">
+        <img id="lightbox-img" src="">
+        <div id="lightbox-date" style="color: white; margin-top: 5px;"></div>
+    </div>
+    <span id="next" onclick="nextImage(event)">&#10095;</span>
+</div>
+
+<script>
+// Tableau des URLs des images
+let images = [{% for img in images %}"{{ img }}"{% if not loop.last %},{% endif %}{% endfor %}];
+
+// Tableau des noms des images
+let imageNames = [{% for img in images %}
+    (function(){
+        let name = "{{ img.split('/') | last }}";
+        let match = name.match(/image_(\d{8})_(\d{6})/);
+        if(match){
+            let date = match[1]; // YYYYMMDD
+            let time = match[2]; // HHMMSS
+            return date.slice(6,8) + "-" + date.slice(4,6) + "-" + date.slice(0,4)
+                 + " " + time.slice(0,2) + ":" + time.slice(2,4) + ":" + time.slice(4,6);
+        } else {
+            return "";
+        }
+    })(){% if not loop.last %},{% endif %}{% endfor %}];
+
+let currentIndex = 0;
+
+// Ouvrir le lightbox
+function openLightbox(index) {
+    currentIndex = index;
+    document.getElementById("lightbox-img").src = images[currentIndex];
+    document.getElementById("lightbox-date").textContent = imageNames[currentIndex];
+    document.getElementById("lightbox").style.display = "flex";
+    document.body.style.overflow = "hidden"; // Bloquer le scroll
+}
+
+// Fermer le lightbox
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+    document.body.style.overflow = "auto"; // Restaurer le scroll
+}
+
+// Image précédente
+function prevImage(event) {
+    event.stopPropagation();
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById("lightbox-img").src = images[currentIndex];
+    document.getElementById("lightbox-date").textContent = imageNames[currentIndex];
+}
+
+// Image suivante
+function nextImage(event) {
+    event.stopPropagation();
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById("lightbox-img").src = images[currentIndex];
+    document.getElementById("lightbox-date").textContent = imageNames[currentIndex];
+}
+
+// Navigation clavier
+document.addEventListener("keydown", function(e) {
+    if (document.getElementById("lightbox").style.display === "flex") {
+        if (e.key === "ArrowLeft") prevImage(e);
+        if (e.key === "ArrowRight") nextImage(e);
+        if (e.key === "Escape") closeLightbox();
+    }
+});
+</script>
+
+{% endblock %}

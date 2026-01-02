@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- HAMBURGER BUTTON -->
+<div id="hamburger" onclick="toggleMenu()">
+    ☰
+</div>
+
+<!-- SIDE MENU -->
+<div id="side-menu">
+    <a href="/">Accueil</a>
+    <a href="/photos">Galerie photos</a>
+    <a href="/tensions">Tensions</a>
+</div>
+
+<!-- OVERLAY (gris semi-transparent quand menu ouvert) -->
+<div id="overlay" onclick="toggleMenu()"></div>
+
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+
+<script>
+function toggleMenu() {
+    document.getElementById("side-menu").classList.toggle("open");
+    document.getElementById("overlay").classList.toggle("show");
+}
+</script>
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2025 Nichoir Connecté by Ous</p>
+</footer>
+</body>
+</html>

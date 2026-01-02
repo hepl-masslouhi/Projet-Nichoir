@@ -1,0 +1,66 @@
+  GNU nano 8.4                                                            gallery.html
+{% extends "base.html" %}
+
+{% block title %}Galerie{% endblock %}
+
+{% block content %}
+
+<div style="text-align: center;">
+<h1>Galerie de Photos</h1>
+</div>
+
+<div class="gallery">
+    {% for img in images %}
+        <div class="gallery-item">
+            <img src="{{ img }}" alt="photo" onclick="openLightbox({{ loop.index0 }})">
+        </div>
+    {% endfor %}
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+    <span id="prev" onclick="prevImage(event)">&#10094;</span>
+    <img id="lightbox-img" src="">
+    <span id="next" onclick="nextImage(event)">&#10095;</span>
+</div>
+
+<script>
+let images = [{% for img in images %}"{{ img }}"{% if not loop.last %},{% endif %}{% endfor %}];
+let currentIndex = 0;
+
+function openLightbox(index) {
+    currentIndex = index;
+    document.getElementById("lightbox-img").src = images[currentIndex];
+    document.getElementById("lightbox").style.display = "flex";
+    document.body.style.overflow = "hidden"; // Bloquer le scroll
+}
+
+function closeLightbox() {
+
+    document.getElementById("lightbox").style.display = "none";
+    document.body.style.overflow = "auto"; // Restaurer le scroll
+}
+
+function prevImage(event) {
+    event.stopPropagation();
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById("lightbox-img").src = images[currentIndex];
+}
+
+function nextImage(event) {
+    event.stopPropagation();
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById("lightbox-img").src = images[currentIndex];
+}
+
+// Navigation clavier
+document.addEventListener("keydown", function(e) {
+    if (document.getElementById("lightbox").style.display === "flex") {
+        if (e.key === "ArrowLeft") prevImage(e);
+        if (e.key === "ArrowRight") nextImage(e);
+        if (e.key === "Escape") closeLightbox();
+    }
+});
+</script>
+
+{% endblock %}

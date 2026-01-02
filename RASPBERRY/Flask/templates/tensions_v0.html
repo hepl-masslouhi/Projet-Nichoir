@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Tensions{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;">Tensions mesurées</h1>
+
+<div style="display: flex; justify-content: center;">
+    <ul>
+        {% for t in tensions %}
+            <li>{{ t }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
