@@ -11,9 +11,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+
 // Préparer les données
-let labels = [{% for t in tensions %}"{{ t.split(' → ')[0] }}"{% if not loop.last %}, {% endif %}{% endfor %}];
-let data = [{% for t in tensions %}{{ t.split(' → ')[1].replace('V','') }}{% if not loop.last %}, {% endif %}{% endfor %}];
+{% set last_tensions = tensions[-20:] %}
+  
+let labels = [{% for t in last_tensions %}"{{ t.split(' → ')[0] }}"{% if not loop.last %}, {% endif %}{% endfor %}];
+let data = [{% for t in last_tensions %}{{ t.split(' → ')[1].replace('V','') }}{% if not loop.last %}, {% endif %}{% endfor %}];
 
 // Créer le graphique
 const ctx = document.getElementById('tensionChart').getContext('2d');
